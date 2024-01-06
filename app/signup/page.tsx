@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sign Up Page | FortuneBrock",
-  description: "This is Sign Up Page for FortuneBrock",
+  title: "Sign Up Page | FortuneBrick",
+  description: "This is Sign Up Page for FortuneBrick",
   // other metadata
 };
 
