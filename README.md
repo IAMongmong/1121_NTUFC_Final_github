@@ -1,4 +1,4 @@
-# FortuneBrick
+# FortuneBricker
 
 ### ✨ Key Features
 - Give You Money!

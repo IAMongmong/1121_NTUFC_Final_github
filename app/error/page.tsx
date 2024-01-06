@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Error Page | FortuneBrick",
-  description: "This is Error Page for FortuneBrick",
+  title: "Error Page | FortuneBricker",
+  description: "This is Error Page for FortuneBricker",
   // other metadata
 };
 

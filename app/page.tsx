@@ -5,8 +5,8 @@ import { Metadata } from "next";
 import Features from "@/components/Features";
 
 export const metadata: Metadata = {
-  title: "FortuneBrick",
-  description: "This is Home for FortuneBrick",
+  title: "FortuneBricker",
+  description: "This is Home for FortuneBricker",
   // other metadata
 };
 
