@@ -2,6 +2,7 @@ import ScrollUp from "@/components/Common/ScrollUp";
 import Hero from "@/components/Hero";
 import Pricing from "@/components/Pricing";
 import { Metadata } from "next";
+import Features from "@/components/Features";
 
 export const metadata: Metadata = {
   title: "FortuneBrick",
@@ -15,6 +16,7 @@ export default function Home() {
       <ScrollUp />
       <Hero />
       <Pricing />
+      <Features />
     </>
   );
 }
