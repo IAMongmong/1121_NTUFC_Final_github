@@ -2,8 +2,8 @@
 import Image from "next/image";
 
 import { Metadata } from "next";
-import DetailData from "@/components/Detail/detaildata";
-import MockData from "@/components/Detail/MockData";
+import DetailData from "./DetailData";
+import MockData from "./MockData";
 
 export const metadata: Metadata = {
     title: "Details Page | FortuneBricker",
