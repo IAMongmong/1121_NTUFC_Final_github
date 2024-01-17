@@ -2,6 +2,8 @@
 import Image from "next/image";
 
 import { Metadata } from "next";
+import DetailData from "@/components/Detail/detaildata";
+import MockData from "@/components/Detail/MockData";
 
 export const metadata: Metadata = {
     title: "Details Page | FortuneBricker",
@@ -32,7 +34,7 @@ const DetailPage = () => {
                                 </div>
                                 <div>
                                     <p className="mb-10 text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
-                                        Blablabla
+                                        <MockData />
                                     </p>
                                     <div className="mb-10 w-full overflow-hidden rounded">
                                         <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
