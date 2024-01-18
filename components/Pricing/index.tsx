@@ -5,17 +5,16 @@ import SectionTitle from "../Common/SectionTitle";
 import OfferList from "./OfferList";
 import PricingBox from "./PricingBox";
 import { provider, signer } from "@/app/providers";
-import { useWeb3 } from '@/app/providers';
 import { SetupFlashloan_Address, TOKENA_ADDRESS } from "@/db/address";
 import { SetupABI, NTUFCAABI } from "@/db/abi";
 
-const Pricing = () => {
+const Pricing = async () => {
   const [isMonthly, setIsMonthly] = useState(true);
   const [bought, setBought] = useState(false);
   // const { provider, signer, loaded } = useWeb3();
   const SetupFlashloan = new ethers.Contract(SetupFlashloan_Address, SetupABI, provider);
   const TokenA = new ethers.Contract(TOKENA_ADDRESS, NTUFCAABI, provider);
-  const address = signer.getAddress();
+  const address = signer ? await signer.getAddress() : null;
   const handleBuy = async (plan) => {
     let fee = 0;
     switch (plan) {
@@ -92,7 +91,7 @@ const Pricing = () => {
             price={isMonthly ? "40 wei" : "400 wei"}
             duration={isMonthly ? "mo" : "yr"}
             subtitle="選這個就對了!"
-            handleBuy={()=>handleBuy(1)}
+            handleBuy={() => handleBuy(1)}
           >
             <OfferList text="Basic rewards" status="active" />
             <OfferList text="Listening on 3 token pairs" status="active" />
@@ -103,8 +102,8 @@ const Pricing = () => {
             price={isMonthly ? "100 wei" : "800 wei"}
             duration={isMonthly ? "mo" : "yr"}
             subtitle="這個也不錯，有眼光"
-            handleBuy={()=>handleBuy(2)}
-            >
+            handleBuy={() => handleBuy(2)}
+          >
             <OfferList text="Basic reward" status="active" />
             <OfferList text="Listening on 5 token pairs" status="active" />
             <OfferList text="Select token pairs by yourself" status="active" />
@@ -114,7 +113,7 @@ const Pricing = () => {
             price={isMonthly ? "300 wei" : "2000 wei"}
             duration={isMonthly ? "mo" : "yr"}
             subtitle="就怕你買不起"
-            handleBuy={()=>handleBuy(3)}
+            handleBuy={() => handleBuy(3)}
           >
             <OfferList text="Basic rewards" status="active" />
             <OfferList text="Listening on 9 token pairs" status="active" />
