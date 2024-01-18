@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import DetailData from "./DetailData";
 import MockData from "./MockData";
+import nice_meme from "./nice_meme.jpg";
 
 export const metadata: Metadata = {
     title: "Details Page | FortuneBricker",
@@ -39,7 +40,7 @@ const DetailPage = () => {
                                     <div className="mb-10 w-full overflow-hidden rounded">
                                         <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
                                             <Image
-                                                src="nice_meme.jpg"
+                                                src={nice_meme}
                                                 alt="image"
                                                 fill
                                                 className="object-cover object-center"
@@ -47,11 +48,8 @@ const DetailPage = () => {
                                         </div>
                                     </div>
                                     <h3 className="font-xl mb-10 font-bold leading-tight text-black dark:text-white sm:text-2xl sm:leading-tight lg:text-xl lg:leading-tight xl:text-2xl xl:leading-tight">
-                                        It is not bad!
+                                        It is not bad! Keep it up!
                                     </h3>
-                                    <p className="mb-10 text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
-                                        Keep it up!
-                                    </p>
                                 </div>
                             </div>
                         </div>
