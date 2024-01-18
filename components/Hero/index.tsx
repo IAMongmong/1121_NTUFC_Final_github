@@ -17,19 +17,19 @@ const Hero = () => {
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
                   FortuneBricker
                 </h1>
-                <p className="dark:text-body-color-dark mb-12 text-base !leading-relaxed text-body-color sm:text-lg md:text-xl">
+                <p className="dark:text-body-color-dark mb-2 text-base !leading-relaxed text-body-color sm:text-lg md:text-xl">
                   FortuneBricker is the first platform that brings everyone the chance to arbitrage on DEX.<br />
                   By subscribing our service, you can get the latest arbitrage opportunities on DEX and earn the passive income!<br />
                   Lets start your arbitrage journey with FortuneBricker and make money together!<br />
                 </p>
-                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+                {/* <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
                     href="https://1121-ntufc-final-github.vercel.app/"
                     className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
                   >
                     🔥 Subscribe
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
