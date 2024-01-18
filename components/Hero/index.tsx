@@ -20,7 +20,7 @@ const Hero = () => {
                 <p className="dark:text-body-color-dark mb-12 text-base !leading-relaxed text-body-color sm:text-lg md:text-xl">
                   FortuneBricker is the first platform that brings everyone the chance to arbitrage on DEX.<br />
                   By subscribing our service, you can get the latest arbitrage opportunities on DEX and earn the passive income!<br />
-                  Let\'s start your arbitrage journey with FortuneBricker and make money together!<br />
+                  Lets start your arbitrage journey with FortuneBricker and make money together!<br />
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
