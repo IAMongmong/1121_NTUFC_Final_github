@@ -19,13 +19,13 @@ const Pricing = () => {
     let fee = 0;
     switch (plan) {
       case 1:
-        fee = isMonthly ? 40 : 400;
+        fee = isMonthly ? 100 : 1000;
         break;
       case 2:
-        fee = isMonthly ? 100 : 800;
+        fee = isMonthly ? 250 : 1600;
         break;
       case 3:
-        fee = isMonthly ? 300 : 2000;
+        fee = isMonthly ? 1200 : 10000;
         break;
     }
     if (address) {
@@ -88,7 +88,7 @@ const Pricing = () => {
         <div className="flex flex-col md:flex-row justify-center items-center">
           <PricingBox
             packageName="Basic"
-            price={isMonthly ? "40 wei" : "400 wei"}
+            price={isMonthly ? "100 wei" : "1000 wei"}
             duration={isMonthly ? "mo" : "yr"}
             subtitle="選這個就對了!"
             handleBuy={() => handleBuy(1)}
@@ -99,7 +99,7 @@ const Pricing = () => {
           </PricingBox>
           <PricingBox
             packageName="Silver"
-            price={isMonthly ? "100 wei" : "800 wei"}
+            price={isMonthly ? "250 wei" : "1600 wei"}
             duration={isMonthly ? "mo" : "yr"}
             subtitle="這個也不錯，有眼光"
             handleBuy={() => handleBuy(2)}
@@ -110,7 +110,7 @@ const Pricing = () => {
           </PricingBox>
           <PricingBox
             packageName="Premium"
-            price={isMonthly ? "300 wei" : "2000 wei"}
+            price={isMonthly ? "1200 wei" : "10000 wei"}
             duration={isMonthly ? "mo" : "yr"}
             subtitle="就怕你買不起"
             handleBuy={() => handleBuy(3)}
@@ -128,7 +128,7 @@ const Pricing = () => {
           height="601"
           viewBox="0 0 239 601"
           fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          xmlns="http://www.w3.org/10000/svg"
         >
           <rect
             opacity="0.3"

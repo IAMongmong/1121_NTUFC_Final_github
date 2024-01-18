@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ethers } from "ethers";
 import { provider, signer } from "@/app/providers";
 import nice_meme from "./nice_meme.jpg";
+import waiting from "./waiting.png";
 import { SetupFlashloan_Address } from "@/db/address";
 import { SetupABI } from "@/db/abi";
 import { useState, useEffect } from "react";
@@ -61,8 +62,16 @@ const DetailPage = () => {
                                         </div>
                                     </>
                                     :
-                                    <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
+                                    <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight h-full">
                                         Waiting for our smart bot...
+                                        <div className="relative aspect-[40/20] w-full sm:aspect-[40/30]">
+                                            <Image
+                                                src={waiting}
+                                                alt="waiting"
+                                                fill
+                                                className="my-3 object-center"
+                                            />
+                                        </div>
                                     </h2>
                                 }
                             </div>
