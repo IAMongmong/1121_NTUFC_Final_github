@@ -8,6 +8,10 @@ import { SetupABI } from "@/db/abi";
 const DetailPage = () => {
     const SetupFlashloan = new ethers.Contract(SetupFlashloan_Address, SetupABI, provider);
     const rewards = SetupFlashloan.rewards(provider.getSigner().getAddress());
+    const claim = async () => {
+        const tx = await SetupFlashloan.connect(provider.getSigner()).claim(provider.getSigner().getAddress());
+        await tx.wait();
+    }
     return (
         <>
             <section className="pb-[120px] pt-[150px]">
@@ -21,14 +25,9 @@ const DetailPage = () => {
                                             You have earned ${rewards} ether!
                                         </h2>                                
                                         <div className="mb-10 flex flex-wrap items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
-                                            <div className="mb-5">
-                                                <a
-                                                    href="#0"
-                                                    className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
-                                                >
-                                                    Claim
-                                                </a>
-                                            </div>
+                                            <button onClick={claim} className="mb-5 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white">
+                                                Claim
+                                            </button>
                                         </div>
                                         <div>
                                             <div className="mb-10 w-full overflow-hidden rounded">

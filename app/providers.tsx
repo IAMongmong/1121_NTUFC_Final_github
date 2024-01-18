@@ -48,7 +48,7 @@ import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { Sepolia } from "@thirdweb-dev/chains";
 import { ethers } from "ethers";
 
-export const provider = new ethers.providers.Web3Provider(window.ethereum)
+export const provider = window.ethereum? new ethers.providers.Web3Provider(window.ethereum) : new ethers.providers.JsonRpcProvider(process.env.NEXT_PUBLIC_RPC_URL)
 export const signer = provider.getSigner()
 
 export function Providers({ children }: { children: React.ReactNode }) {
