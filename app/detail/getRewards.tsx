@@ -1,6 +1,6 @@
 // getData.tsx
 import { ethers } from "ethers";
-import { provider } from "@/app/providers";
+import { provider, signer } from "@/app/providers";
 import { SetupFlashloan_Address } from "@/db/address";
 import { SetupABI } from "@/db/abi";
 

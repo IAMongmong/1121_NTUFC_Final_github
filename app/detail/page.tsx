@@ -1,15 +1,32 @@
 "use client";
 import Image from "next/image";
 import { ethers } from "ethers";
-import { provider } from "@/app/providers";
+import { provider, signer } from "@/app/providers";
 import nice_meme from "./nice_meme.jpg";
 import { SetupFlashloan_Address } from "@/db/address";
 import { SetupABI } from "@/db/abi";
-const DetailPage = (rewards, claim) => {
-    const SetupFlashloan = new ethers.Contract(SetupFlashloan_Address, SetupABI, provider);
-
-
-
+import { useState, useEffect } from "react";
+const DetailPage = () => {
+    const [rewards, setRewards] = useState("0");
+    const claim = async () => {
+        const SetupFlashloan = new ethers.Contract(SetupFlashloan_Address, SetupABI, provider);
+        const tx = await SetupFlashloan.connect(signer).claim(signer.getAddress());
+        await tx.wait();
+        setRewards("0");
+    }
+    useEffect(() => {
+        const getRewards = async () => {
+            const SetupFlashloan = new ethers.Contract(SetupFlashloan_Address, SetupABI, provider);
+            const rewards = await SetupFlashloan.rewards(signer.getAddress());
+            const wholeReward = ethers.utils.formatEther(rewards);
+            // only sho rewards 5 decimal places
+            const decimal = wholeReward.indexOf(".");
+            const decimal5 = decimal + 5;
+            const simplifyRewards = wholeReward.slice(0, decimal5);
+            setRewards(simplifyRewards);
+        }
+        getRewards();
+    }, [])
     return (
         <>
             <section className="pb-[120px] pt-[150px]">
@@ -17,7 +34,7 @@ const DetailPage = (rewards, claim) => {
                     <div className="-mx-4 flex flex-wrap justify-center">
                         <div className="w-full px-4 lg:w-8/12">
                             <div>
-                                {rewards > 0 ?
+                                {Number(rewards) > 0 ?
                                     <>
                                         <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
                                             You have earned ${rewards} ether!
@@ -29,7 +46,7 @@ const DetailPage = (rewards, claim) => {
                                         </div>
                                         <div>
                                             <div className="mb-10 w-full overflow-hidden rounded">
-                                                <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
+                                                <div className="relative aspect-[87/70] w-full sm:aspect-[40/34]">
                                                     <Image
                                                         src={nice_meme}
                                                         alt="image"
