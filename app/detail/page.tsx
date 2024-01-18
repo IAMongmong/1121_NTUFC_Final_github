@@ -34,16 +34,16 @@ const DetailPage = () => {
                                     </div>
                                 </div>
                                 <div>
-                                    <p className="mb-10 text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
+                                    <h3 className="font-xl mb-10 font-bold leading-tight text-black dark:text-white sm:text-2xl sm:leading-tight lg:text-xl lg:leading-tight xl:text-2xl xl:leading-tight">
                                         <MockData />
-                                    </p>
+                                    </h3>
                                     <div className="mb-10 w-full overflow-hidden rounded">
                                         <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
                                             <Image
                                                 src={nice_meme}
                                                 alt="image"
                                                 fill
-                                                className="object-cover object-center"
+                                                className="object-center"
                                             />
                                         </div>
                                     </div>
