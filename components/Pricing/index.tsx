@@ -1,22 +1,34 @@
 "use client";
 import { ethers } from "ethers";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SectionTitle from "../Common/SectionTitle";
 import OfferList from "./OfferList";
 import PricingBox from "./PricingBox";
 import { provider, signer } from "@/app/providers";
+import { useWeb3 } from '@/app/providers';
 import { SetupFlashloan_Address, TOKENA_ADDRESS } from "@/db/address";
 import { SetupABI, NTUFCAABI } from "@/db/abi";
 
 const Pricing = () => {
   const [isMonthly, setIsMonthly] = useState(true);
   const [bought, setBought] = useState(false);
+  // const { provider, signer, loaded } = useWeb3();
   const SetupFlashloan = new ethers.Contract(SetupFlashloan_Address, SetupABI, provider);
   const TokenA = new ethers.Contract(TOKENA_ADDRESS, NTUFCAABI, provider);
   const address = signer.getAddress();
-  
-  const handleBuy = async (price) => {
-    const fee = price;
+  const handleBuy = async (plan) => {
+    let fee = 0;
+    switch (plan) {
+      case 1:
+        fee = isMonthly ? 40 : 400;
+        break;
+      case 2:
+        fee = isMonthly ? 100 : 800;
+        break;
+      case 3:
+        fee = isMonthly ? 300 : 2000;
+        break;
+    }
     if (address) {
       await TokenA.connect(signer).approve(SetupFlashloan_Address, fee);
       const tx = await SetupFlashloan.connect(signer).subscribe(address);
@@ -30,9 +42,9 @@ const Pricing = () => {
       <div className="container">
         <SectionTitle
           title="Simple and Affordable Pricing"
-          paragraph="每天少喝一杯星巴克，一個月就可以買一年的FortuneBricker"
+          paragraph="Basic rewards = (rewards from a token pair) / (# of people listening on this token pair)"
           center
-          width="665px"
+          width="1280px"
         />
 
         <div className="w-full">
@@ -75,47 +87,39 @@ const Pricing = () => {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          {/* <PricingBox
-            packageName="Lite"
-            price={isMonthly ? "40" : "120"}
-            duration={isMonthly ? "mo" : "yr"}
-            subtitle="選這個就對了!"
-          >
-            <OfferList text="Function 1" status="active" />
-            <OfferList text="Function 2" status="active" />
-            <OfferList text="Function 3" status="active" />
-            <OfferList text="Email Support" status="active" />
-            <OfferList text="Lifetime Access" status="inactive" />
-            <OfferList text="Free Lifetime Updates" status="inactive" />
-          </PricingBox> */}
           <PricingBox
             packageName="Basic"
-            price={isMonthly ? "100 wei" : "789 wei"}
+            price={isMonthly ? "40 wei" : "400 wei"}
+            duration={isMonthly ? "mo" : "yr"}
+            subtitle="選這個就對了!"
+            handleBuy={()=>handleBuy(1)}
+          >
+            <OfferList text="Basic rewards" status="active" />
+            <OfferList text="Listening on 3 token pairs" status="active" />
+            <OfferList text="Select token pairs by yourself" status="inactive" />
+          </PricingBox>
+          <PricingBox
+            packageName="Silver"
+            price={isMonthly ? "100 wei" : "800 wei"}
             duration={isMonthly ? "mo" : "yr"}
             subtitle="這個也不錯，有眼光"
-            handleBuy={()=>handleBuy(100)}
-            bought={bought}
-          >
-            <OfferList text="Function 1" status="active" />
-            <OfferList text="Function 2" status="active" />
-            <OfferList text="Function 3" status="active" />
-            <OfferList text="Email Support" status="active" />
-            <OfferList text="Lifetime Access" status="active" />
-            <OfferList text="Free Lifetime Updates" status="inactive" />
+            handleBuy={()=>handleBuy(2)}
+            >
+            <OfferList text="Basic reward" status="active" />
+            <OfferList text="Listening on 5 token pairs" status="active" />
+            <OfferList text="Select token pairs by yourself" status="active" />
           </PricingBox>
-          {/* <PricingBox
-            packageName="Plus"
-            price={isMonthly ? "589" : "999"}
+          <PricingBox
+            packageName="Premium"
+            price={isMonthly ? "300 wei" : "2000 wei"}
             duration={isMonthly ? "mo" : "yr"}
             subtitle="就怕你買不起"
+            handleBuy={()=>handleBuy(3)}
           >
-            <OfferList text="Function 1" status="active" />
-            <OfferList text="Function 2" status="active" />
-            <OfferList text="Function 3" status="active" />
-            <OfferList text="Email Support" status="active" />
-            <OfferList text="Lifetime Access" status="active" />
-            <OfferList text="Free Lifetime Updates" status="active" />
-          </PricingBox> */}
+            <OfferList text="Basic rewards" status="active" />
+            <OfferList text="Listening on 9 token pairs" status="active" />
+            <OfferList text="Select token pairs by yourself" status="active" />
+          </PricingBox>
         </div>
       </div>
 

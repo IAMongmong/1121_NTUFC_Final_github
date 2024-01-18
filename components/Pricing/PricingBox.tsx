@@ -5,9 +5,8 @@ const PricingBox = (props: {
   subtitle: string;
   children: React.ReactNode;
   handleBuy?: () => void;
-  bought?: boolean;
 }) => {
-  const { price, duration, packageName, subtitle, children, handleBuy, bought } = props;
+  const { price, duration, packageName, subtitle, children, handleBuy } = props;
 
   return (
     <div className="w-full">
@@ -27,7 +26,7 @@ const PricingBox = (props: {
         <p className="mb-7 text-base text-body-color">{subtitle}</p>
         <div className="mb-8 border-b border-body-color border-opacity-10 pb-8 dark:border-white dark:border-opacity-10">
           <button onClick={handleBuy} className="flex w-full items-center justify-center rounded-sm bg-primary p-3 text-base font-semibold text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
-            {bought?"Thank you":"Start Free Trial"}
+            Start Free Trial
           </button>
         </div>
         <div>{children}</div>

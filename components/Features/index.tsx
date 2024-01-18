@@ -9,7 +9,7 @@ const Features = () => {
         <div className="container">
           <SectionTitle
             title="Main Features"
-            paragraph="就。很好用。"
+            paragraph="3 powerful features that makes you earn much more and saves you time!"
             center
           />
 

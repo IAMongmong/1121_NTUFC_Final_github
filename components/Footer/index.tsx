@@ -18,35 +18,35 @@ const Footer = () => {
                     src="/images/logo/logo.png"
                     alt="logo"
                     className="w-full dark:hidden"
-                    width={140}
-                    height={30}
+                    width={200}
+                    height={60}
                   />
                   <Image
                     src="/images/logo/logo.png"
                     alt="logo"
                     className="hidden w-full dark:block"
-                    width={140}
-                    height={30}
+                    width={200}
+                    height={60}
                   />
                 </Link>
-                <p className="dark:text-body-color-dark mb-9 text-base leading-relaxed text-body-color">
+                {/* <p className="dark:text-body-color-dark mb-9 text-base leading-relaxed text-body-color">
                   我搬磚，你賺錢。
                 </p>
                 <div className="flex items-center">
 
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
 
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
+          {/* <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
           <div className="py-8">
             <p className="text-center text-base text-body-color dark:text-white">
               Find us{" "}
               <a href="https://1121-ntufc-final-github.vercel.app/" rel="nofollow noopener">
                 here</a>
             </p>
-          </div>
+          </div> */}
         </div>
         <div className="absolute right-0 top-14 z-[-1]">
           <svg
