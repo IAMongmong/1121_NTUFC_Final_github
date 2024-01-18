@@ -3,8 +3,8 @@ const PricingBox = (props: {
   duration: string;
   packageName: string;
   subtitle: string;
-  children: React.ReactNode;
   handleBuy?: () => void;
+  children: React.ReactNode;
 }) => {
   const { price, duration, packageName, subtitle, children, handleBuy } = props;
 

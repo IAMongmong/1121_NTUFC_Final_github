@@ -7,14 +7,14 @@ import PricingBox from "./PricingBox";
 import { provider, signer } from "@/app/providers";
 import { SetupFlashloan_Address, TOKENA_ADDRESS } from "@/db/address";
 import { SetupABI, NTUFCAABI } from "@/db/abi";
+import { useAddress } from "@thirdweb-dev/react";
 
-const Pricing = async () => {
+const Pricing = () => {
   const [isMonthly, setIsMonthly] = useState(true);
   const [bought, setBought] = useState(false);
-  // const { provider, signer, loaded } = useWeb3();
   const SetupFlashloan = new ethers.Contract(SetupFlashloan_Address, SetupABI, provider);
   const TokenA = new ethers.Contract(TOKENA_ADDRESS, NTUFCAABI, provider);
-  const address = signer ? await signer.getAddress() : null;
+  const address = useAddress();
   const handleBuy = async (plan) => {
     let fee = 0;
     switch (plan) {
