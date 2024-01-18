@@ -51,16 +51,12 @@ import { ethers } from "ethers";
 let provider;
 let signer;
 
-// export const provider = window.ethereum? new ethers.providers.Web3Provider(window.ethereum) : new ethers.providers.JsonRpcProvider(process.env.NEXT_PUBLIC_RPC_URL)
-// export const signer = provider.getSigner()
 if (typeof window !== "undefined" && window.ethereum) {
-  // Check if running on the client side and window.ethereum is available
   provider = new ethers.providers.Web3Provider(window.ethereum);
   signer = provider.getSigner();
 } else {
-  // Fallback to a default provider or handle the case where window.ethereum is not available
   provider = new ethers.providers.JsonRpcProvider(`https://eth-sepolia.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_RPC_URL}`);
-  signer = null; // You might want to provide a default signer or handle this case differently
+  signer = null; 
 }
 export { provider, signer };
 

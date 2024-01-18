@@ -85,7 +85,7 @@ const Pricing = async () => {
             </span>
           </div>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex flex-col md:flex-row justify-center items-center">
           <PricingBox
             packageName="Basic"
             price={isMonthly ? "40 wei" : "400 wei"}
