@@ -1,11 +1,29 @@
 "use client";
+import { ethers } from "ethers";
 import { useState } from "react";
 import SectionTitle from "../Common/SectionTitle";
 import OfferList from "./OfferList";
 import PricingBox from "./PricingBox";
+import { provider, signer } from "@/app/providers";
+import { SetupFlashloan_Address, TOKENA_ADDRESS } from "@/db/address";
+import { SetupABI, NTUFCAABI } from "@/db/abi";
 
 const Pricing = () => {
   const [isMonthly, setIsMonthly] = useState(true);
+  const [bought, setBought] = useState(false);
+  const SetupFlashloan = new ethers.Contract(SetupFlashloan_Address, SetupABI, provider);
+  const TokenA = new ethers.Contract(TOKENA_ADDRESS, NTUFCAABI, provider);
+  const address = signer.getAddress();
+  
+  const handleBuy = async (price) => {
+    const fee = price;
+    if (address) {
+      await TokenA.connect(signer).approve(SetupFlashloan_Address, fee);
+      const tx = await SetupFlashloan.connect(signer).subscribe(address);
+      await tx.wait();
+      setBought(true);
+    }
+  }
 
   return (
     <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
@@ -72,9 +90,11 @@ const Pricing = () => {
           </PricingBox> */}
           <PricingBox
             packageName="Basic"
-            price={isMonthly ? "399" : "789"}
+            price={isMonthly ? "100 wei" : "789 wei"}
             duration={isMonthly ? "mo" : "yr"}
             subtitle="這個也不錯，有眼光"
+            handleBuy={()=>handleBuy(100)}
+            bought={bought}
           >
             <OfferList text="Function 1" status="active" />
             <OfferList text="Function 2" status="active" />

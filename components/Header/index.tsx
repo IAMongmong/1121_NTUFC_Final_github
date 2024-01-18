@@ -39,6 +39,8 @@ const Header = () => {
 
   const usePathName = usePathname();
 
+  const address = useAddress();
+
   return (
     <>
       <header
