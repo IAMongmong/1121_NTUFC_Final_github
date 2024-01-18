@@ -5,13 +5,11 @@ import { provider } from "@/app/providers";
 import nice_meme from "./nice_meme.jpg";
 import { SetupFlashloan_Address } from "@/db/address";
 import { SetupABI } from "@/db/abi";
-const DetailPage = () => {
+const DetailPage = (rewards, claim) => {
     const SetupFlashloan = new ethers.Contract(SetupFlashloan_Address, SetupABI, provider);
-    const rewards = SetupFlashloan.rewards(provider.getSigner().getAddress());
-    const claim = async () => {
-        const tx = await SetupFlashloan.connect(provider.getSigner()).claim(provider.getSigner().getAddress());
-        await tx.wait();
-    }
+
+
+
     return (
         <>
             <section className="pb-[120px] pt-[150px]">
@@ -19,11 +17,11 @@ const DetailPage = () => {
                     <div className="-mx-4 flex flex-wrap justify-center">
                         <div className="w-full px-4 lg:w-8/12">
                             <div>
-                                {rewards>0?
+                                {rewards > 0 ?
                                     <>
                                         <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
                                             You have earned ${rewards} ether!
-                                        </h2>                                
+                                        </h2>
                                         <div className="mb-10 flex flex-wrap items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
                                             <button onClick={claim} className="mb-5 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white">
                                                 Claim
@@ -45,7 +43,7 @@ const DetailPage = () => {
                                             </h3>
                                         </div>
                                     </>
-                                :
+                                    :
                                     <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight">
                                         Waiting for our smart bot...
                                     </h2>

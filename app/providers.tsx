@@ -59,7 +59,7 @@ if (typeof window !== "undefined" && window.ethereum) {
   signer = provider.getSigner();
 } else {
   // Fallback to a default provider or handle the case where window.ethereum is not available
-  provider = new ethers.providers.JsonRpcProvider(process.env.NEXT_PUBLIC_RPC_URL);
+  provider = new ethers.providers.JsonRpcProvider(`https://eth-sepolia.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_RPC_URL}`);
   signer = null; // You might want to provide a default signer or handle this case differently
 }
 export { provider, signer };
